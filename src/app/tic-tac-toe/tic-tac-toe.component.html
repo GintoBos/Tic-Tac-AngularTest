@@ -1,12 +1,18 @@
 <div id="gameContainer">
-    <h1>Tic Tac Toe</h1>
+    <h1 id = "title">Tic Tac Toe</h1>
     <div id="cellContainer">
       <div *ngFor="let cell of cells; let i = index" 
            class="Cell" 
-           (click)="cellClicked(i)">
+           (click)="cellClicked(i)"
+           [ngStyle]="{'background-color': isWinningCell(i) ? 'lightgreen' : 'transparent'}">
         {{ cell }}
       </div>
     </div>
     <h2>{{ statusText }}</h2>
-    <button (click)="restartGame()">Restart</button>
+    <div class = "button-container">
+      <button (click)="restartGame()">Restart</button>
+      <button (click)="PcPlayer()" id = "pcButton">Computer</button>
+    </div>
+    <p>X Wins: {{ winCountX }}</p>
+    <p>O Wins: {{ winCountO }}</p>
   </div>

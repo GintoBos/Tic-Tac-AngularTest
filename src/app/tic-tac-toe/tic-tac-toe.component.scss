@@ -1,9 +1,10 @@
+
 .Cell {
     width: 75px;
     height: 75px;
     border: 2px solid;
     box-shadow: 0 0 0 2px;
-    line-height: 5px;
+    line-height: 70px;
     font-size: 50px;
     cursor: pointer;
 }
@@ -13,9 +14,33 @@
     text-align: center;
 }
 
+#title{
+    color:deeppink;
+}
+
 #cellContainer {
-    display: grid;
+    display:grid;
     grid-template-columns: repeat(3, auto);
-    width: 225px;
-    margin: auto;
+    width: 220px;
+    margin: auto; 
 } 
+
+.button-container{
+    display: grid;
+    gap:10px;
+    align-items: center;
+}
+
+button{
+    background-color:dodgerblue;
+    color:azure;
+    border-radius:20px;
+    font-family: "Permanent Marker", cursive;
+    margin:auto;
+    padding: 6px;
+}
+
+button:hover{
+    background-color:rgb(102, 194, 251);
+}
+

@@ -14,6 +14,10 @@ export class TicTacToeComponent implements OnInit {
   currentPlayer: 'X' | 'O' = 'X';
   statusText: string = `${this.currentPlayer}'s turn`;
   running: boolean = true;
+  color: string = 'black';
+  winningCells: number[] = [];
+  winCountX = 0;
+  winCountO = 0;
 
   winConditions: number[][] = [
     [0, 1, 2], // horizontally
@@ -37,16 +41,16 @@ export class TicTacToeComponent implements OnInit {
     this.currentPlayer = 'X';
     this.statusText = `${this.currentPlayer}'s turn`;
     this.running = true;
+    this.winningCells = [];
+    
   }
 
   cellClicked(index: number): void {
     if (!this.running || this.cells[index] !== "") {
       return;
     }
-
     this.updateCell(index);
-    this.checkWinner();
-    
+    this.checkWinner(); 
   }
 
   updateCell(index: number): void {
@@ -59,6 +63,10 @@ export class TicTacToeComponent implements OnInit {
     this.statusText = `${this.currentPlayer}'s turn`;
   }
 
+  botPlay(): void{
+    this.cellClicked(Math.floor(Math.random() * (9 - 1 + 1)) + 1);
+  }
+
   checkWinner(): void {
     for (let condition of this.winConditions) {
       const [a, b, c] = condition;
@@ -67,9 +75,14 @@ export class TicTacToeComponent implements OnInit {
         this.cells[a] === this.cells[b] &&
         this.cells[a] === this.cells[c]
       ) {
-        this.changePlayer(); 
-        this.statusText = `${this.currentPlayer} wins`;
+        this.winningCells = [a, b, c];
+        this.statusText = `${this.cells[a]} wins`;   
         this.running = false;
+        if (this.cells[a] === 'X') {
+          this.winCountX++;
+        } else {
+          this.winCountO++;
+        }
         return;
       }
     }
@@ -80,7 +93,16 @@ export class TicTacToeComponent implements OnInit {
     }
   }
 
+  isWinningCell(index: number): boolean {
+    return this.winningCells.includes(index);
+  }
+
   restartGame(): void {
     this.initializeGame();
   }
+
+  PcPlayer(): void{
+    this.botPlay();
+  }
+
 }

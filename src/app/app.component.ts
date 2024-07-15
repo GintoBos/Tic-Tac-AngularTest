@@ -6,7 +6,8 @@ import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [TicTacToeComponent]
+  imports: [TicTacToeComponent
+  ]
 })
 export class AppComponent {
   title = 'Tic-Tac-Project';
