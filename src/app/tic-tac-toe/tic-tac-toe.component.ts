@@ -30,7 +30,6 @@ export class TicTacToeComponent implements OnInit {
     [2, 4, 6],
   ];
 
-  constructor() { }
 
   ngOnInit(): void {
     this.initializeGame();

@@ -1,0 +1,12 @@
+<div id="snakeContainer">
+    <h1 id = "title">Snake Game</h1>
+    <div id = "cellContainer">
+        <div *ngFor="let cell of cells; let i = index"
+            class="cell" 
+            (click)="cellClicked(i)">
+            {{ cell }}
+        </div>
+    </div> 
+</div>
+
+

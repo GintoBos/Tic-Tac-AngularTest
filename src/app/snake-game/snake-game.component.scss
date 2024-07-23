@@ -1,0 +1,24 @@
+#title{
+    text-align: center;
+    color:rgb(42, 158, 61);
+    font-family: "Permanent Marker", cursive;
+}
+
+.Cell{
+    
+    width: 75px;
+    height: 75px;
+    border: 2px solid;
+    box-shadow: 0 0 0 2px;
+    line-height: 70px;
+    font-size: 50px;
+    cursor: pointer;
+    
+}
+
+#cellContainer{
+    display:grid;
+    grid-template-columns: repeat(3, auto);
+    width: 220px;
+    margin: auto;
+}
