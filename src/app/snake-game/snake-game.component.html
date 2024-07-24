@@ -1,12 +1,18 @@
-<div id="snakeContainer">
-    <h1 id = "title">Snake Game</h1>
-    <div id = "cellContainer">
-        <div *ngFor="let cell of cells; let i = index"
-            class="cell" 
-            (click)="cellClicked(i)">
-            {{ cell }}
+<div class="game-container">
+    <div *ngIf="snakeService.gameOver" class="game-over">
+      Game Over!
+      <button (click)="snakeService.reset_Game()">Restart</button>
+    </div>
+    <div class="grid">
+      <div
+        *ngFor="let row of [].constructor(snakeService.gridSize); let x = index"
+        class="row">
+        <div
+          *ngFor="let col of [].constructor(snakeService.gridSize); let y = index"
+          [ngClass]="getClass(x, y)"
+          class="cell">
         </div>
-    </div> 
-</div>
-
-
+      </div>
+    </div>
+  </div>
+  

@@ -1,24 +1,31 @@
-#title{
-    text-align: center;
-    color:rgb(42, 158, 61);
-    font-family: "Permanent Marker", cursive;
-}
-
-.Cell{
-    
-    width: 75px;
-    height: 75px;
-    border: 2px solid;
-    box-shadow: 0 0 0 2px;
-    line-height: 70px;
-    font-size: 50px;
-    cursor: pointer;
-    
-}
-
-#cellContainer{
-    display:grid;
-    grid-template-columns: repeat(3, auto);
-    width: 220px;
-    margin: auto;
-}
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    gap: 2px;
+  }
+  
+  .cell {
+    width: 20px;
+    height: 20px;
+    background-color: lightgray;
+  }
+  
+  .snake {
+    background-color: green;
+  }
+  
+  .food {
+    background-color: red;
+  }
+  
+  .game-over {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  

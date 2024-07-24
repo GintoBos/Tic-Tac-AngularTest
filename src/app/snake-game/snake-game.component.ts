@@ -1,64 +1,47 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { SnakeService } from '../snake.service';
 
 @Component({
   selector: 'app-snake-game',
   standalone: true,
   templateUrl: './snake-game.component.html',
-  styleUrl: './snake-game.component.scss',
+  styleUrls: ['./snake-game.component.scss'],
   imports: [
     CommonModule,
   ],
-  
 })
-export class SnakeGameComponent implements OnInit{
-  cells: string[] = ["", "", "", "", "", "", "", "", "", "", "" , ""];
-  running: boolean = true;
-  color: string = 'black';
-  apple: string = "X";
-  counter: number = 0;
-//add the snake which will be moved and get longer + 1 after eating the apple 
-//add apple which spawns at random col or row and after eaten it gets despawn
-//add a counter for each apple eaten
-//if the snake hits the inner walls it will make the game to reset 
-  ngOnInit(): void {
-    this.initializeGame();
+export class SnakeGameComponent {
+  constructor(public snakeService: SnakeService) {
+    // Start moving the snake at regular intervals
+    setInterval(() => this.snakeService.move_Snake(), 100);
   }
 
-  initializeGame(): void {
-    this.cells = ["", "", "", "", "", "", "", "", "", "", "", ""];
-    this.running = true;
-    
+  getClass(x: number, y: number): any {
+    return {
+      snake: this.snakeService.snake.some(
+        segment => segment.x === x && segment.y === y
+      ),
+      food: this.snakeService.food.x === x && this.snakeService.food.y === y
+    };
   }
 
-  cellClicked(index: number): void {
-    if (!this.running || this.cells[index] !== "") {
-      return;
+  // Keyboard event for snake movement
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowUp':
+        this.snakeService.change_Direction({ x: -1, y: 0 });
+        break;
+      case 'ArrowDown':
+        this.snakeService.change_Direction({ x: 1, y: 0 });
+        break;
+      case 'ArrowLeft':
+        this.snakeService.change_Direction({ x: 0, y: -1 });
+        break;
+      case 'ArrowRight':
+        this.snakeService.change_Direction({ x: 0, y: 1 });
+        break;
     }
-    this.updateCell(index);
-  }
-
-  updateCell(index: number): void {
-    
-  }
-
-  AppleRandSpawn(): void{
-    this.cellClicked(Math.floor(Math.random() * (9 - 1 + 1)) + 1);
-  }
-
-
-  SnakeMovement(): void{
-
-  }
-
-  SnakeGrow(): void{
-  }
-
-  AppleDespawn(): void{
-
-  }
-
-  restartGame(): void {
-    this.initializeGame();
   }
 }
