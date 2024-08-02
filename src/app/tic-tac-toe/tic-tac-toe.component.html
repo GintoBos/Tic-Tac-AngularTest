@@ -11,7 +11,8 @@
     <h2>{{ statusText }}</h2>
     <div class = "button-container">
       <button (click)="restartGame()">Restart</button>
-      <button (click)="PcPlayer()" id = "pcButton">Computer</button>    
+      <button (click)="PcPlayer()" id = "pcButton">Computer</button>
+      <button routerLink="/snake-game">Go to Snake Game</button>    
     </div>
     <p>X Wins: {{ winCountX }}</p>
     <p>O Wins: {{ winCountO }}</p>

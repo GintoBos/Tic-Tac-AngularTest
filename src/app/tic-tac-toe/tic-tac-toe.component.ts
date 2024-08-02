@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-tic-tac-toe',
   templateUrl: './tic-tac-toe.component.html',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class TicTacToeComponent implements OnInit {
+  
   cells: string[] = ["", "", "", "", "", "", "", "", ""];
   currentPlayer: 'X' | 'O' = 'X';
   statusText: string = `${this.currentPlayer}'s turn`;

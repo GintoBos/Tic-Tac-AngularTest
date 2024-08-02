@@ -7,11 +7,11 @@
       <div
         *ngFor="let row of [].constructor(snakeService.gridSize); let x = index"
         class="row">
-        <div
-          *ngFor="let col of [].constructor(snakeService.gridSize); let y = index"
-          [ngClass]="getClass(x, y)"
-          class="cell">
-        </div>
+          <div
+            *ngFor="let col of [].constructor(snakeService.gridSize); let y = index"
+            [ngClass]="getClass(x, y)"
+            class="cell">
+          </div>
       </div>
     </div>
   </div>
